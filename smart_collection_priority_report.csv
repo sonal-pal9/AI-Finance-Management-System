@@ -1,0 +1,6 @@
+invoice_id,customer,invoice_date,due_date,invoice_total,total_paid,outstanding_amount,payment_completion_percentage,days_until_due,days_overdue,collection_score,priority,reason,recommended_action
+INV0051,Mindful Works Pvt Ltd,2026-07-20,2026-08-04,40530.0,0.0,40530.0,0.0,4,0,50,HIGH,"Significant outstanding balance of ₹40,530.00; No payment has been received; Due soon in 4 days",Contact customer before due date and confirm payment commitment
+INV0049,Mindful Works Pvt Ltd,2026-07-31,2026-08-15,44310.0,0.0,44310.0,0.0,15,0,45,MEDIUM,"Significant outstanding balance of ₹44,310.00; No payment has been received; Invoice is not yet due",Monitor and schedule reminder before due date
+INV0050,Bloom Corporate Services,2026-07-16,2026-07-31,20895.0,0.0,20895.0,0.0,0,0,45,MEDIUM,No payment has been received; Due in 0 days,Send pre-due payment reminder
+INV0053,FitLife Studio,2026-07-08,2026-07-23,18900.0,9450.0,9450.0,50.0,0,8,40,MEDIUM,Only 50.0% of the invoice has been paid; 8 days overdue,Send payment reminder and review again in 3 days
+INV0052,Mindful Works Pvt Ltd,2026-07-20,2026-08-04,47880.0,33516.0,14364.0,70.0,4,0,30,MEDIUM,Only 70.0% of the invoice has been paid; Due soon in 4 days,Send pre-due payment reminder

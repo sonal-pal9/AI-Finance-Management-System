@@ -1,0 +1,6 @@
+priority,action_type,reference,counterparty,cash_impact,reason,recommended_action
+CRITICAL,FUND PAYROLL,PAYROLL,Employees,-95400.0,"₹95,400.00 in employee salaries remains pending",Reserve funds for payroll before non-critical payments
+HIGH,ACCELERATE COLLECTION,INV0051,Mindful Works Pvt Ltd,40530.0,"₹40,530.00 remains outstanding and is due within 4 days",Contact customer before due date and confirm payment
+HIGH,REVIEW OVERDUE PAYABLE,BILL007,PowerGrid Mumbai,-4800.0,"₹4,800.00 supplier obligation is 1 days overdue",Review supplier terms and determine whether payment can be scheduled
+HIGH,REVIEW OVERDUE PAYABLE,BILL004,ProteinPlus India,-16200.0,"₹16,200.00 supplier obligation is 11 days overdue",Review supplier terms and determine whether payment can be scheduled
+MEDIUM,PLAN SUPPLIER PAYMENT,BILL008,HealthyGrain Foods,-27600.0,"₹27,600.00 supplier bill is due within 5 days",Include in cash planning and schedule payment according to terms

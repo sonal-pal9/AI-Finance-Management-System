@@ -1,0 +1,6 @@
+severity,source,reference,period,issue,difference,explanation,recommended_action
+HIGH,CURRENT TAX RECORD,TAX003,2026-07,TAXABLE AMOUNT MISMATCH,90,"Books tax = ₹11,250.00, reported tax = ₹11,160.00",Review source records and reconcile before relying on the reported figure
+HIGH,CURRENT TAX RECORD,TAX006,2026-04,TAXABLE AMOUNT MISMATCH,270,"Books tax = ₹17,640.00, reported tax = ₹17,370.00",Review source records and reconcile before relying on the reported figure
+MEDIUM,CURRENT TAX RECORD,TAX004,2026-06,LATE FILING,620,Filing was 3 day(s) late,"Verify filing date, penalty and interest against supporting records"
+MEDIUM,CURRENT TAX RECORD,TAX006,2026-04,LATE FILING,1250,Filing was 8 day(s) late,"Verify filing date, penalty and interest against supporting records"
+HIGH,HISTORICAL RECORD,H005,2026-01,TAX_MISMATCH,2300,Historical issue remains OPEN,Investigate and document resolution before treating tax records as complete

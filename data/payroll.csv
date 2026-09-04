@@ -1,0 +1,11 @@
+employee_id,employee_name,department,gross_salary,deductions,net_salary,payment_status
+EMP001,Aarav Sharma,Kitchen,35000,3500,31500,Paid
+EMP002,Diya Patel,Kitchen,32000,3200,28800,Paid
+EMP003,Rohan Mehta,Operations,45000,4500,40500,Paid
+EMP004,Ananya Shah,Marketing,40000,4000,36000,Paid
+EMP005,Vivaan Rao,Finance,42000,4200,37800,Pending
+EMP006,Ishita Desai,Kitchen,30000,3000,27000,Paid
+EMP007,Kabir Joshi,Delivery,28000,2800,25200,Pending
+EMP008,Meera Kapoor,Operations,38000,3800,34200,Paid
+EMP009,Arjun Nair,Kitchen,31000,3100,27900,Paid
+EMP010,Sara Khan,Admin,36000,3600,32400,Pending

@@ -1,0 +1,6 @@
+reporting_period,account,operational_amount,tally_amount,difference,status
+2026-07,Sales Revenue,390883.5,125000.0,265883.5,MISMATCH
+2026-07,Staff Expense,357000.0,95400.0,261600.0,MISMATCH
+2026-07,Accounts Receivable,129549.0,129549.0,0.0,MATCH
+2026-07,Accounts Payable,81500.0,81500.0,0.0,MATCH
+2026-07,GST Payable,45000.0,22500.0,22500.0,MISMATCH

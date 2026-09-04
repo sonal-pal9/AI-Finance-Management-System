@@ -1,0 +1,8 @@
+check,status,reason
+Reconciliation,REVIEW,7 exception(s) require review
+Accounts Receivable,REVIEW,"₹129,549.00 remains outstanding"
+Accounts Payable,REVIEW,"₹81,500.00 remains payable"
+Cash Position,WARNING,"Negative cash position of ₹382,005.00"
+Liquidity,WARNING,1 critical liquidity action(s)
+Payroll,REVIEW,"₹95,400.00 payroll pending"
+Tax & Compliance,REVIEW,2 tax mismatch(es) detected

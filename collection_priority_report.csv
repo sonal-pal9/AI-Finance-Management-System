@@ -1,0 +1,6 @@
+invoice_id,customer,invoice_date,due_date,invoice_total,total_paid,outstanding_amount,days_overdue,risk_score,priority,recommended_action
+INV0049,Mindful Works Pvt Ltd,2026-07-31,2026-08-15,44310.0,0.0,44310.0,0,40,MEDIUM,Monitor until due date
+INV0051,Mindful Works Pvt Ltd,2026-07-20,2026-08-04,40530.0,0.0,40530.0,0,40,MEDIUM,Monitor until due date
+INV0050,Bloom Corporate Services,2026-07-16,2026-07-31,20895.0,0.0,20895.0,0,40,MEDIUM,Monitor until due date
+INV0053,FitLife Studio,2026-07-08,2026-07-23,18900.0,9450.0,9450.0,8,40,MEDIUM,Send payment reminder
+INV0052,Mindful Works Pvt Ltd,2026-07-20,2026-08-04,47880.0,33516.0,14364.0,0,30,LOW,No immediate action - monitor
