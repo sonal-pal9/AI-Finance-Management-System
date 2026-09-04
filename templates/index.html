@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nourish Cafe | AI Finance Controller</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+        <h1>Nourish Cafe</h1>
+
+        <p>AI Finance Controller</p>
+
+        <div class="status">
+            System Online
+        </div>
+    </header>
+
+
+    <!-- ================= FINANCIAL METRICS ================= -->
+
+    <div class="metrics">
+
+        <!-- Current Cash -->
+        <div class="card">
+            <p>Current Cash</p>
+            <h2 id="currentCash">Loading...</h2>
+        </div>
+
+
+        <!-- Estimated Cash Gap -->
+        <div class="card">
+            <p>Estimated Cash Gap</p>
+            <h2 id="cashGap">Loading...</h2>
+        </div>
+
+
+        <!-- Financial Integrity -->
+        <div class="card">
+            <p>Financial Integrity</p>
+            <h2 id="financialIntegrity">Loading...</h2>
+        </div>
+
+
+        <!-- Outstanding Invoices -->
+        <div class="card">
+            <p>Outstanding Invoices</p>
+            <h2 id="outstandingInvoices">Loading...</h2>
+        </div>
+
+    </div>
+
+
+    <!-- ================= LIQUIDITY ================= -->
+
+    <div class="liquidity-card">
+
+        <h2>Liquidity Status</h2>
+
+        <span id="liquidityStatus" class="critical">
+            Loading...
+        </span>
+
+    </div>
+
+
+    <!-- ================= PRIORITY ACTIONS ================= -->
+
+    <div class="actions">
+
+        <h2>Priority Actions</h2>
+
+        <div id="recommendations">
+
+            <p>Loading recommendations...</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+async function loadDashboard() {
+
+    try {
+
+        /* Get financial summary */
+
+        const response =
+            await fetch("/api/financial-summary");
+
+        const data =
+            await response.json();
+
+
+        /* ===============================
+           FINANCIAL VALUES
+        =============================== */
+
+        document.getElementById("currentCash").textContent =
+            formatCurrency(data.current_cash);
+
+
+        /*
+         Estimated cash gap
+
+         If your backend later provides
+         estimated_cash_gap, it will use it.
+
+         Otherwise calculate:
+         required outflows - current cash
+        */
+
+        let cashGap = data.estimated_cash_gap;
+
+        if (cashGap === undefined) {
+
+            cashGap = Math.max(
+                0,
+                (data.required_outflows || 0)
+                - (data.current_cash || 0)
+            );
+
+        }
+
+        document.getElementById("cashGap").textContent =
+            formatCurrency(cashGap);
+
+
+        document.getElementById("financialIntegrity").textContent =
+            data.financial_integrity ?? "N/A";
+
+
+        document.getElementById("outstandingInvoices").textContent =
+            data.outstanding_invoices ?? "0";
+
+
+        /* ===============================
+           LIQUIDITY STATUS
+        =============================== */
+
+        const statusElement =
+            document.getElementById("liquidityStatus");
+
+        statusElement.textContent =
+            data.cash_risk || "UNKNOWN";
+
+
+        /* Change status styling */
+
+        statusElement.className = "";
+
+        if (data.cash_risk === "CRITICAL") {
+
+            statusElement.classList.add("critical");
+
+        }
+        else if (data.cash_risk === "HIGH") {
+
+            statusElement.classList.add("high");
+
+        }
+        else if (data.cash_risk === "MEDIUM") {
+
+            statusElement.classList.add("medium");
+
+        }
+        else {
+
+            statusElement.classList.add("low");
+
+        }
+
+
+        /* ===============================
+           RECOMMENDATIONS
+        =============================== */
+
+        loadRecommendations();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Dashboard error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   LOAD RECOMMENDATIONS
+===================================== */
+
+async function loadRecommendations() {
+
+    try {
+
+        const response =
+            await fetch("/api/recommendations");
+
+        const recommendations =
+            await response.json();
+
+
+        const container =
+            document.getElementById("recommendations");
+
+
+        container.innerHTML = "";
+
+
+        recommendations.forEach((item, index) => {
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "action-card";
+
+
+            card.innerHTML = `
+
+                <div class="priority">
+                    Priority ${item.priority || index + 1}
+                </div>
+
+                <h3>
+                    ${item.title || "Recommended Action"}
+                </h3>
+
+                <p>
+                    ${item.action || ""}
+                </p>
+
+                ${
+                    item.reason
+                    ? `<p><strong>Reason:</strong> ${item.reason}</p>`
+                    : ""
+                }
+
+            `;
+
+
+            container.appendChild(card);
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Recommendation error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   CURRENCY FORMAT
+===================================== */
+
+function formatCurrency(value) {
+
+    if (value === undefined || value === null) {
+
+        return "₹0";
+
+    }
+
+
+    return "₹" + Number(value).toLocaleString(
+        "en-IN",
+        {
+            maximumFractionDigits: 0
+        }
+    );
+
+}
+
+
+/* =====================================
+   START DASHBOARD
+===================================== */
+
+loadDashboard();
+
+</script>
+
+</body>
+
+</html>

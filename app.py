@@ -1,7 +1,6 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 
 from finance.api_snapshot import build_api_snapshot
-
 
 app = Flask(__name__)
 
@@ -12,11 +11,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-
-    return jsonify({
-        "application": "Nourish Cafe AI Finance Controller",
-        "status": "running"
-    })
+    return render_template("index.html")
 
 
 # ============================================================
@@ -25,9 +20,7 @@ def home():
 
 @app.route("/api/financial-summary")
 def financial_summary():
-
     snapshot = build_api_snapshot()
-
     return jsonify(snapshot)
 
 
@@ -37,20 +30,9 @@ def financial_summary():
 
 @app.route("/api/recommendations")
 def recommendations():
-
     snapshot = build_api_snapshot()
+    return jsonify(snapshot["recommendations"])
 
-    return jsonify(
-        snapshot["recommendations"]
-    )
-
-
-# ============================================================
-# RUN SERVER
-# ============================================================
 
 if __name__ == "__main__":
-
-    app.run(
-        debug=True
-    )
+    app.run(debug=True)
